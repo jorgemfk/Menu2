@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cbn_item_internal_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:duplicateParentState="true"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/cnb_space_0"
+        android:paddingTop="@dimen/cnb_space_1"
+        android:paddingEnd="@dimen/cnb_space_0"
+        android:paddingBottom="@dimen/cnb_space_1"
+        tools:background="#000">
+
+
+
+        <ImageView
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:scaleType="fitXY"
+            android:id="@+id/icon"
+            android:layout_gravity="right|top" />
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginStart="@dimen/cnb_space_1"
+        android:paddingTop="@dimen/cnb_space_10"
+        android:duplicateParentState="true"
+        android:singleLine="true"
+        android:visibility="visible"
+        android:textSize="10sp"
+        tools:text="Discover"
+        tools:textColor="#03A9F4"
+        tools:visibility="visible" />
+    </LinearLayout>
+

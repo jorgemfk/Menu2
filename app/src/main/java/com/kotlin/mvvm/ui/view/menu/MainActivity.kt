@@ -1,17 +1,21 @@
 package com.kotlin.mvvm.ui.view.menu
 
+//import com.kotlin.mvvm.databinding.ExampleMenuBinding
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.kotlin.mvvm.R
-//import com.kotlin.mvvm.databinding.ExampleMenuBinding
-import com.kotlin.mvvm.databinding.MenuBinding
-import com.kotlin.mvvm.ui.view.PageAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kotlin.mvvm.databinding.MenuBinding
+import com.kotlin.mvvm.ui.view.PageAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import com.kotlin.mvvm.R
 
 //import kotlinx.android.synthetic.main.activity_main.*
 @AndroidEntryPoint
@@ -32,18 +36,27 @@ class MainActivity : AppCompatActivity() {
         viewPager=findViewById(R.id.view_pager_2)
         viewPager.adapter = PageAdapter(this)
         TabLayoutMediator(labLayout, viewPager){ tab, index ->
-            tab.text = when(index){
-                0-> {"Center"}
-                1-> {"Pharmacy"}
-                2-> {"Insurance"}
-                3-> {"Vision"}
-                else -> { throw Resources.NotFoundException("PS not")}
-            }
-            tab.icon= when(index){
-                0-> {resources.getDrawable(R.drawable.health_selector,null)}
-                1-> {resources.getDrawable(R.drawable.pharmacy_selector,null)}
-                2-> {resources.getDrawable(R.drawable.insurance_selector,null)}
-                3-> {resources.getDrawable(R.drawable.vision_selector,null)}
+
+            tab.customView =when(index){
+                0-> {
+                    val view: View = layoutInflater.inflate(R.layout.menu_item, null)
+                    view.findViewById<ImageView>(R.id.icon). background=resources.getDrawable(R.drawable.health_selector,null)
+                    view.findViewById<TextView>(R.id.item_title).text="Center"
+                    view
+                }
+                1-> {
+                    val view: View = layoutInflater.inflate(R.layout.menu_item, null)
+                    view.findViewById<ImageView>(R.id.icon). background=resources.getDrawable(R.drawable.pharmacy_selector,null)
+                    view.findViewById<TextView>(R.id.item_title).text="Pharmacy"
+                    view}
+                2-> {val view: View = layoutInflater.inflate(R.layout.menu_item, null)
+                    view.findViewById<ImageView>(R.id.icon). background=resources.getDrawable(R.drawable.insurance_selector,null)
+                    view.findViewById<TextView>(R.id.item_title).text="Insurance"
+                    view}
+                3-> {val view: View = layoutInflater.inflate(R.layout.menu_item, null)
+                    view.findViewById<ImageView>(R.id.icon). background=resources.getDrawable(R.drawable.vision_selector,null)
+                    view.findViewById<TextView>(R.id.item_title).text="Vision"
+                    view}
                 else -> { throw Resources.NotFoundException("PS not")}
             }
         }.attach()
